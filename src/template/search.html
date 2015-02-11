@@ -1,0 +1,54 @@
+<section class="searchBar">
+<h3 class="search_bar_title"><span class="icon-search"></span> Search Trains<span class="align_right"><a href="#home">Cancel</a></span></h3>
+<section>
+<h4 class="search_second_title">Select your route</h4>
+<div class="newLocations">
+	<div class="newLocationSource">
+		<label>From</label><span>
+		<select ng-change="stationsChanged(search,search.source,search.destination,'search',true)" ng-model="search.source" ng-options="c.label for c in arrayStationNames">
+		</select>
+		</span>
+	</div>
+	<div class="newLocationDestination">
+		<label>To</label><span>
+		<select ng-change="stationsChanged(search,search.source,search.destination,'search',true)" ng-model="search.destination" ng-options="c.label for c in arrayStationNames">
+		</select>
+		</span>
+	</div>
+</div>
+</section><section class="trains-chart" id="SearchTrainChart"><hgroup class="hidden">
+<h1 class="title-listTrains">From:<strong>{{search.source.label}}</strong></h1>
+<h1 class="title-listTrains">To:<strong>{{search.destination.label}}</strong></h1>
+</hgroup><section class="trains-prop" ng-show="search.trainsArray.nextTrains.length> 0">
+<dl>
+	<dd class='label-distance'>Distance</dd>
+	<dt class="text-distance" ng-bind="search.trainsArray.currentTrainArray.totalJourneyKM"></dt>
+</dl>
+<dl>
+	<dd class='label-journey'>Journey Time</dd>
+	<dt class="text-journey" ng-bind="search.trainsArray.currentTrainArray.totalJourneyTime"></dt>
+</dl>
+<dl class="hidden" ng-click="changeInlineRequested(search,search.whenInlineChange)" ng-model="search.whenInlineChange">
+	<dd class="train-chart-edit"><span class="icon-equalizer"></span>Change</dd>
+</dl>
+</section>
+<ul>
+	<li class="next-train" ng-repeat="t in search.trainsArray.nextTrains">
+	<div class="next-train-station">
+		<div class="next-train-name" ng-bind="t.fulltrainname">
+		</div>
+		<div class="hidden next-train-secs" ng-bind="t.whenNextTrain">
+		</div>
+		<div class="next-train-secs">
+			&nbsp;
+		</div>
+	</div>
+	<div class="next-train-watch">
+		{{t.hoursMinutesZeroPadded[0]}}:{{t.hoursMinutesZeroPadded[1]}}
+	</div>
+	</li>
+</ul>
+<div class="notrainsfound" ng-model="search.noTrains" ng-show="search.noTrains">
+	No Trains Found for these locations :(
+</div>
+</section></section>

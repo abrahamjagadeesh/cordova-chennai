@@ -1,0 +1,12 @@
+ <h4 id="weather-text">
+            <small class="weather-img-container">
+                <span class="weather-icon">
+                    <i class="icon icon-{{temperature.code}}"></i>
+                </span>
+                <span data-ng-bind="temperature.text"></span>
+            </small>
+        </h4>
+<article id="weather-degree">
+    <p class="void"><span data-ng-bind="temperature.temp"></span><span><sup>°</sup>C</span>
+    </p>
+</article>

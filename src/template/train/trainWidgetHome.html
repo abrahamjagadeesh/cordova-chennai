@@ -1,0 +1,12 @@
+<div class="widget-one">
+    <div class="widget-time">
+        <span ng-bind="sector.trainsArray.currentTrainArray.hoursMinutesZeroPadded[0]"></span>
+        <span class="colon"> : </span>
+        <span ng-bind="sector.trainsArray.currentTrainArray.hoursMinutesZeroPadded[1]"></span>
+    </div>
+    <div class="widget-place">
+        <span ng-bind="sector.source.label"></span>
+        <span> to </span> 
+        <span ng-bind="sector.destination.label"></span>
+    </div>
+</div>

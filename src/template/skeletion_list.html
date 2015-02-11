@@ -1,0 +1,49 @@
+<section class="trains-chart" id="firstTrainChart"><hgroup>
+	<h1 class="title-listTrains">From:<strong>{{sector.source.label}}</strong></h1>
+	<h1 class="title-listTrains">To:<strong>{{sector.destination.label}}</strong></h1>
+</hgroup><section class="trains-prop">
+<dl>
+	<dd class='label-distance'>Distance</dd>
+	<dt class="text-distance" ng-bind="sector.trainsArray.currentTrainArray.totalJourneyKM"></dt>
+</dl>
+<dl>
+	<dd class='label-journey'>Journey Time</dd>
+	<dt class="text-journey" ng-bind="sector.trainsArray.currentTrainArray.totalJourneyTime"></dt>
+</dl>
+<dl ng-click="changeInlineRequested(sector.whenInlineChange)" ng-model="sector.whenInlineChange">
+	<dd class="train-chart-edit"><span class="icon-equalizer"></span> Change</dd>
+</dl>
+</section>
+<ul data-ng-hide="$root.whenLocationChange">
+	<li class="next-train" ng-repeat="t in sector.trainsArray.nextFiveTrainsArray">
+		<span href="#train/MSBGPDLOCALDaily/time/0935">
+			<div class="next-train-station">
+				<div class="next-train-name" ng-bind="t.fulltrainname">
+				</div>
+				<div class="next-train-secs" ng-bind="t.whenNextTrain">
+				</div>
+			</div>
+			<div class="next-train-watch">
+				{{t.hoursMinutesZeroPadded[0]}}:{{t.hoursMinutesZeroPadded[1]}}
+			</div>
+		</span>
+	</li>
+</ul>
+<div class="newLocations" data-ng-show="sector.whenInlineChange">
+	<div class="newLocationSource">
+		<label>From</label><span>
+		<select ng-change="stationsChanged(sector,sector.source,sector.destination,sector.port,false,$root)" ng-model="sector.source" ng-init="sector.source=sector.arrayStationNames[sector.orderofSourceStation]" ng-options="c.label for c in $root.arrayStationNames">
+		</select>
+	</span>
+</div>
+<div class="newLocationDestination">
+	<label>To</label><span>
+	<select ng-change="stationsChanged(sector,sector.source,sector.destination,sector.port,false,$root)" ng-model="sector.destination" ng-init="sector.destination=sector.arrayStationNames[sector.orderofDestinationStation]" ng-options="c.label for c in $root.arrayStationNames">
+	</select>
+</span>
+</div>
+</div>
+<div class="notrainsfound" ng-model="sector.noTrains" ng-show="sector.noTrains">
+	No Trains Found for these locations :(
+</div>
+</section>

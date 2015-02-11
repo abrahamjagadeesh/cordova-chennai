@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html class="ltr" lang="en-US" dir="ltr" data-ng-app="chennai">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Chennai Metro City</title>
+
+    <link href='https://fonts.googleapis.com/css?family=RobotoDraft:100,300,400,500,400italic' rel='stylesheet' type='text/css'>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/site.css">
+
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-route.js"></script>
+
+    <!--all train stations name-->
+    <script src="js/source/train/data/source.js"></script>
+    <!--all train information-->
+    <script src="js/source/train/data/datatrains.js"></script>
+
+
+    <!-- start angularjs module-->
+    <script src="js/entry/config.js"></script>
+    <!--    angular routes-->
+    <script src="js/entry/routes.js"></script>
+    <!--    weather widget-->
+    <script src="js/source/weather/weather.js"></script>
+    <!--    news widget-->
+    <script src="js/source/news/news.js"></script>
+
+
+    <!--    train widget helper and main fn-->
+    <script src="js/source/train/helpers.js"></script>
+    <script src="js/source/train/main.js"></script>
+    <!--    train widget directive has listTrains & widget directives-->
+    <script src="js/source/train/directive.js"></script>
+
+
+
+
+
+
+</head>
+
+
+<body data-ng-controller="main">
+
+    <section id="head">
+        <h3 class="title">
+            Chennai
+            <a class="menu" id="menu" href=""><i class="fa fa-reorder"></i></a>
+        </h3>
+    </section>
+
+    <div ng-view></div>
+
+
+</body>
+
+</html>
